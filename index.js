@@ -71,3 +71,15 @@ app.get('/', (req, res) => {
   })
   
 })
+
+
+// 5. 상세페이지 조회
+app.get('/:id', (req, res) => {
+  const sql = 'SELECT * FROM test_db.recruit WHERE id = ?'
+  
+  connection.query(sql, req.params.id, (err, rows, fields) => {
+    if (err) throw err
+    res.send(rows)
+  })
+  
+})
